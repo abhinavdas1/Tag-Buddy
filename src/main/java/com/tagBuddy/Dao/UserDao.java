@@ -1,5 +1,6 @@
 package com.tagBuddy.Dao;
 
+import com.sun.tools.javac.util.*;
 import com.tagBuddy.Entity.User;
 
 /**
@@ -18,6 +19,7 @@ import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
 import java.util.*;
+import java.util.List;
 
 import com.mongodb.Block;
 
@@ -51,20 +53,36 @@ public class UserDao {
         {
             int count  = tagCount.getOrDefault(user.getTags().get(i), 0);
             tagCount.put(user.getTags().get(i), ++count);
-
-            Document findQuery = new Document("tag", user.getTags().get(i));
-            Document item = new Document("users", user.getUserId());
-            Document updateQuery = new Document("$push", item);
-            tagUsers.updateOne(findQuery, updateQuery);
-
         }
-
-        Document record = new Document("id", user.getUserId());
-        Document tags = new Document();
 
         for(Map.Entry<String, Integer> entry : tagCount.entrySet())
         {
-            tags.append(entry.getKey(), entry.getValue());
+            ArrayList<String> in = new ArrayList<String>();
+            in.add(entry.getKey());
+            Document query = new Document("tag", new Document("$exists", true).append("$in" , in));
+
+            MongoCursor<Document> cursor = tagUsers.find(query).iterator();
+
+            try {
+                if(!cursor.hasNext()) {
+                    tagUsers.insertOne(new Document("tag", entry.getKey()).append("users", new ArrayList<String>()));
+                }
+            } finally {
+
+            }
+
+            Document findQuery = new Document("tag", entry.getKey());
+            Document item = new Document("users", user.getUserId());
+            Document updateQuery = new Document("$push", item);
+            tagUsers.updateOne(findQuery, updateQuery);
+        }
+
+        Document record = new Document("id", user.getUserId());
+        List<Document> tags = new ArrayList<Document>();
+
+        for(Map.Entry<String, Integer> entry : tagCount.entrySet())
+        {
+            tags.add(new Document("name", entry.getKey()).append("val", entry.getValue()));
         }
 
 
@@ -76,4 +94,62 @@ public class UserDao {
         client.close();
     }
 
+    public Map<String,Integer> getTagCount(String id) {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> users = db.getCollection("Users");
+        Document query = new Document("id", id);
+
+        MongoCursor<Document> cursor = users.find(query).iterator();
+        Map<String, Integer> result = new HashMap<String, Integer>();
+
+        try {
+            while(cursor.hasNext()) {
+                Document doc = cursor.next();
+                List<Document> tags = (List<Document>) doc.get("tags");
+
+                for(Document d : tags)
+                {
+                    result.put((String)d.get("name"), (Integer)d.get("val"));
+                }
+            }
+        } finally {
+
+        }
+
+        client.close();
+
+        return result;
+
+    }
+
+    public Map<String,java.util.List<String>> getUserTags() {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> tagUsers = db.getCollection("TagUsers");
+        Document query = new Document();
+
+        MongoCursor<Document> cursor = tagUsers.find(query).iterator();
+        Map<String, List<String>> result = new HashMap<String, List<String>>();
+
+        try {
+            while(cursor.hasNext()) {
+                Document doc = cursor.next();
+                String name = (String)doc.get("tag");
+                List<String> users = (List<String>) doc.get("users");
+
+                result.put(name, users);
+            }
+        } finally {
+
+        }
+
+        return result;
+    }
 }
