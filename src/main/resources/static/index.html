@@ -125,6 +125,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 <script>
   var retArr=[];
+  var parsed;
+  var resp;
   function httpGetAsync(access_token, callback)
   {
       var theUrl="https://api.instagram.com/v1/users/self/media/recent/?access_token="+access_token;
@@ -132,10 +134,8 @@
       xmlHttp.onreadystatechange = function() { 
           if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
           {
-              var resp=xmlHttp.responseText;
-              var parsed=JSON.parse(resp);
-              localStorage.setItem("userId", parsed.data[0].user.id);
-              localStorage.setItem("userName", parsed.data[0].user.full_name);
+              resp=xmlHttp.responseText;
+              parsed=JSON.parse(resp);
               for(i=0;i<parsed.data.length;i++)
                 parsed.data[i].tags.forEach(appendTags);
           }
@@ -157,8 +157,10 @@
       console.log(instagram);
       // Retrieves user data from oauth provider
       console.log(instagram.access_token);
-      localStorage.setItem("access_token", instagram.access_token);
       httpGetAsync(instagram.access_token, 'error.html');
+      console.log(resp);
+      localStorage.removeItem("access_token");
+      localStorage.setItem("access_token", instagram.access_token);
       console.log(retArr);
       window.location.replace("newProfile.html");
     });
