@@ -1,6 +1,6 @@
 package com.tagBuddy.Controller;
 
-import com.sun.tools.javac.util.List;
+//import com.sun.tools.javac.util.List;
 import com.tagBuddy.Entity.FriendSuggestion;
 import com.tagBuddy.Entity.User;
 import com.tagBuddy.Service.FriendService;

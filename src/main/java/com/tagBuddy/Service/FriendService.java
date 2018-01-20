@@ -1,6 +1,6 @@
 package com.tagBuddy.Service;
 
-import com.sun.tools.javac.util.List;
+//import com.sun.tools.javac.util.List;
 import com.tagBuddy.Dao.UserDao;
 import com.tagBuddy.Entity.FriendSuggestion;
 import com.tagBuddy.Entity.User;
