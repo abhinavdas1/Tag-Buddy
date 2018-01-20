@@ -160,6 +160,7 @@
       localStorage.setItem("access_token", instagram.access_token);
       httpGetAsync(instagram.access_token, 'error.html');
       console.log(retArr);
+      window.location.replace("newProfile.html");
     });
   })
 </script>
