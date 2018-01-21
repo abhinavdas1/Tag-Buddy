@@ -30,20 +30,21 @@ function appendTags(item)
 }
 function httpGetAsync(tagArr, userId)
 {
-  var theUrl="/api/v1/user/add";
+  var theUrl="http://10.136.214.106:8080/api/v1/user/add";
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function() { 
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
       {
-          resp=xmlHttp.responseText;
-          parsed=JSON.parse(resp);
-          userId=parsed.data[0].user.id;
-          userName=parsed.data[0].user.full_name;
-          for(i=0;i<parsed.data.length;i++)
-            parsed.data[i].tags.forEach(appendTags);
-          
+       	 var resp=xmlHttp.responseText;
+       	 var parsed=JSON.parse(resp);
+       	 console.log(parsed);
+       	 for (var i in parsed.matchCounts)
+       	 {
+       	 	var e={'id':i,'tag':parsed.matchCounts[i]};
+       	 	console.log(e);
+       	 }
       }
   }
   xmlHttp.open("POST", theUrl, true); // true for asynchronous 
-  xmlHttp.send("userId="+userId+"&tags="+tagArr);
+  xmlHttp.send("userId=das&tags=four");
 }
