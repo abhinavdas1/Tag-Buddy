@@ -1,5 +1,5 @@
 body {
-	background: #eee url(http://subtlepatterns.com/patterns/sativa.png);
+  background: #eee url(http://subtlepatterns.com/patterns/sativa.png);
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 
@@ -19,209 +19,209 @@ heading {
 }
 .userprofile {
     width: 100%;
-	float: left;
-	clear: both;
-	margin: 40px auto
+  float: left;
+  clear: both;
+  margin: 40px auto
 }
 .userprofile .userpic {
-	height: 250px;
-	width: 250px;
-	clear: both;
-	margin: 0 auto;
-	display: block;
-	border-radius: 100%;
-	box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	-moz-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	-webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	-ms-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	position: relative; 
+  height: 250px;
+  width: 250px;
+  clear: both;
+  margin: 0 auto;
+  display: block;
+  border-radius: 100%;
+  box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  position: relative; 
 }
 .userprofile .userpic .userpicimg {
-	height: auto;
-	width: 100%;
-	border-radius: 100%;
+  height: auto;
+  width: 100%;
+  border-radius: 100%;
 }
 .username {
-	font-weight: 700;
-	font-size: 30px;
-	line-height: 40px;
-	color: #000000;
-	margin-top: 20px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 40px;
+  color: #000000;
+  margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .username+p {
-	color: #000000;
-	font-weight: 550;
-	font-size: 20px;
-	line-height: 20px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+  color: #000000;
+  font-weight: 550;
+  font-size: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .settingbtn {
-	height: 30px;
-	width: 30px;
-	border-radius: 30px;
-	display: block;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	line-height: 30px;
-	vertical-align: middle;
-	text-align: center;
-	padding: 0;
-	box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
-	-moz-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
-	-webkit-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
-	-ms-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0;
+  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
 }
 .userprofile.small {
-	width: auto;
-	clear: both;
-	margin: 0px auto;
+  width: auto;
+  clear: both;
+  margin: 0px auto;
 }
 .userprofile.small .userpic {
-	height: 40px;
-	width: 40px;
-	margin: 0 10px 0 0;
-	display: block;
-	border-radius: 100%;
-	box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	-moz-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	-webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	-ms-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
-	position: relative;
-	float: left;
+  height: 40px;
+  width: 40px;
+  margin: 0 10px 0 0;
+  display: block;
+  border-radius: 100%;
+  box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+  float: left;
 }
 .userprofile.small .textcontainer {
-	float: left;
-	max-width: 100px;
-	padding: 0
+  float: left;
+  max-width: 100px;
+  padding: 0
 }
 .userprofile.small .userpic .userpicimg {
-	min-height: 100%;
-	width: 100%;
-	border-radius: 100%;
-	border-color: #000000
+  min-height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  border-color: #000000
 }
 .userprofile.small .username {
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 21px;
-	color: #000000;
-	margin: 0px;
-	float: left;
-	width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  margin: 0px;
+  float: left;
+  width: 100%;
 }
 .userprofile.small .username+p {
-	color: #607d8b;
-	font-size: 13px;
-	float: left;
-	width: 100%;
-	margin: 0;
+  color: #607d8b;
+  font-size: 13px;
+  float: left;
+  width: 100%;
+  margin: 0;
 }
 /*==============================*/
 /*====== Social Profile css =====*/
 /*==============================*/
 .countlist h3 {
-	margin: 0;
-	font-weight: 400;
-	line-height: 28px;
+  margin: 0;
+  font-weight: 400;
+  line-height: 28px;
 }
 .countlist {
-	text-transform: uppercase
+  text-transform: uppercase
 }
 .countlist li {
-	padding: 15px 30px 15px 0;
-	font-size: 14px;
-	text-align: left;
+  padding: 15px 30px 15px 0;
+  font-size: 14px;
+  text-align: left;
 }
 .countlist li small {
-	font-size: 12px;
-	margin: 0
+  font-size: 12px;
+  margin: 0
 }
 .followbtn {
-	float: right;
-	margin: 22px;
+  float: right;
+  margin: 22px;
 }
 .userprofile.social {
-	background: url(http://www.bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg);
-	background-size: 100%;
-	padding: 50px 0;
-	margin: 0
+  background: url((http://www.bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg);
+  background-size: 100%;
+  padding: 50px 0;
+  margin: 0
 }
 .userprofile.social .username {
-	color: #000000
+  color: #000000
 }
 .userprofile.social .username+p {
-	color: #000000;
-	opacity: 0.8
+  color: #000000;
+  opacity: 0.8
 }
 .postbtn {
-	position: absolute;
-	right: 5px;
-	top: 5px;
-	z-index: 9
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 9
 }
 .status-upload {
-	width: 100%;
-	float: left;
-	margin-bottom: 15px
+  width: 100%;
+  float: left;
+  margin-bottom: 15px
 }
 .posttimeline .panel {
-	margin-bottom: 15px
+  margin-bottom: 15px
 }
 .commentsblock {
-	background: #f8f9fb;
+  background: #f8f9fb;
 }
 .nopaddingbtm {
-	margin-bottom: 0
+  margin-bottom: 0
 }
 /*==============================*/
 /*====== Recently connected  heading =====*/
 /*==============================*/
 .memberblock {
-	width: 100%;
-	float: left;
-	clear: both;
-	margin-bottom: 15px
+  width: 100%;
+  float: left;
+  clear: both;
+  margin-bottom: 15px
 }
 .member {
-	width: 24%;
-	float: left;
-	margin: 2px 1% 2px 0;
-	background: #ffffff;
-	border: 1px solid #d8d0c3;
-	padding: 3px;
-	position: relative;
-	overflow: hidden
+  width: 24%;
+  float: left;
+  margin: 2px 1% 2px 0;
+  background: #ffffff;
+  border: 1px solid #d8d0c3;
+  padding: 3px;
+  position: relative;
+  overflow: hidden
 }
 .memmbername {
-	position: absolute;
-	bottom: -30px;
-	background: rgba(0, 0, 0, 0.8);
-	color: #ffffff;
-	line-height: 30px;
-	padding: 0 5px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	width: 100%;
-	font-size: 11px;
-	transition: 0.5s ease all;
+  position: absolute;
+  bottom: -30px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  line-height: 30px;
+  padding: 0 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  font-size: 11px;
+  transition: 0.5s ease all;
 }
 .member:hover .memmbername {
-	bottom: 0
+  bottom: 0
 }
 .member img {
-	width: 100%;
-	transition: 0.5s ease all;
+  width: 100%;
+  transition: 0.5s ease all;
 }
 .member:hover img {
-	opacity: 0.8;
-	transform: scale(1.2)
+  opacity: 0.8;
+  transform: scale(1.2)
 }
 
 .panel-default>.panel-heading {
@@ -402,15 +402,15 @@ heading {
 }
 
 .image-size{
-	overflow: hidden;
-	min-height: 360px;
-    max-height: 360px;
-	min-width: 360px;
-    max-width: 360px;
-	padding-left: 15px;
-	padding-right: 15px;
-	border: 15px;
-	border-color:#000000
+    overflow: hidden; 405.    height: 360px;
+    min-height: 360px;  406.    width: 360px;
+    max-height: 360px;  407.    padding-left: 15px;
+    min-width: 360px; 408.    padding-right: 15px;
+    max-width: 360px; 409.    border: 15px;
+    padding-left: 15px; 410.    border-color:#ffffff
+    padding-right: 15px;    
+    border: 15px;   
+    border-color:#000000;
 }
 
 /* carousel */
@@ -465,7 +465,7 @@ heading {
 
 .item blockquote {
     border-left: none; 
-    margin: 0;`
+    margin: 0;
 }
 
 .item blockquote img {
