@@ -45,6 +45,7 @@ public class UserDao {
 
         MongoCollection<Document> users = db.getCollection("Users");
         MongoCollection<Document> tagUsers = db.getCollection("TagUsers");
+        int totalTags = user.getTags().size();
 
         List<Document> seedData = new ArrayList<Document>();
         Map<String, Integer> tagCount = new HashMap<String, Integer>();
@@ -82,7 +83,7 @@ public class UserDao {
 
         for(Map.Entry<String, Integer> entry : tagCount.entrySet())
         {
-            tags.add(new Document("name", entry.getKey()).append("val", entry.getValue()));
+            tags.add(new Document("name", entry.getKey()).append("val", (float) entry.getValue() / totalTags));
         }
 
 
@@ -94,7 +95,7 @@ public class UserDao {
         client.close();
     }
 
-    public Map<String,Integer> getTagCount(String id) {
+    public Map<String,Double> getTagCount(String id) {
 
         uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
         client = new MongoClient(uri);
@@ -104,7 +105,7 @@ public class UserDao {
         Document query = new Document("id", id);
 
         MongoCursor<Document> cursor = users.find(query).iterator();
-        Map<String, Integer> result = new HashMap<String, Integer>();
+        Map<String, Double> result = new HashMap<String, Double>();
 
         try {
             while(cursor.hasNext()) {
@@ -113,7 +114,7 @@ public class UserDao {
 
                 for(Document d : tags)
                 {
-                    result.put((String)d.get("name"), (Integer)d.get("val"));
+                    result.put((String)d.get("name"), (Double)d.get("val"));
                 }
             }
         } finally {

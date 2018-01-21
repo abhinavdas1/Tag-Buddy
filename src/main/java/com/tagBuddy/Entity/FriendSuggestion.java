@@ -8,19 +8,19 @@ import java.util.Map;
  */
 public class FriendSuggestion {
 
-    private Map<String, Integer> matchCounts;
+    private Map<String, Double> matchCounts;
     private Map<String, java.util.List<String>> matchedTags;
 
-    public FriendSuggestion(Map<String, Integer> matchCounts, Map<String, List<String>> matchedTags) {
+    public FriendSuggestion(Map<String, Double> matchCounts, Map<String, List<String>> matchedTags) {
         this.matchCounts = matchCounts;
         this.matchedTags = matchedTags;
     }
 
-    public Map<String, Integer> getMatchCounts() {
+    public Map<String, Double> getMatchCounts() {
         return this.matchCounts;
     }
 
-    public void setMatchCounts(Map<String, Integer> matchCounts) {
+    public void setMatchCounts(Map<String, Double> matchCounts) {
         this.matchCounts = matchCounts;
     }
 

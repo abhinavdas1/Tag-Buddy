@@ -20,21 +20,22 @@ public class FriendService {
 
     public FriendSuggestion getFriends(String id)
     {
-        Map<String, Integer> tagCounts = userDao.getTagCount(id);
+        Map<String, Double> tagCounts = userDao.getTagCount(id);
         Map<String, java.util.List<String>> tagUsers = userDao.getUserTags();
 
-        Map<String, Integer> matchCounts = new HashMap<String, Integer>();
+        Map<String, Double> matchCounts = new HashMap<String, Double>();
         Map<String, java.util.List<String>> matchedTags = new HashMap<String, java.util.List<String>>();
 
 
-        for(Map.Entry<String, Integer> e : tagCounts.entrySet())
+        for(Map.Entry<String, Double> e : tagCounts.entrySet())
         {
             for(String temp : tagUsers.get(e.getKey()))
             {
                 if(temp.equals(id))
                     continue;
-                int count = matchCounts.getOrDefault(temp, 0);
-                matchCounts.put(temp, ++count);
+                double count = matchCounts.getOrDefault(temp, 0.0);
+                Map<String, Double> tagCountsUser = userDao.getTagCount(temp);
+                matchCounts.put(temp, count + Math.min(tagCounts.get(e.getKey()), tagCountsUser.get(e.getKey())));
 
                 java.util.List<String> tagList = matchedTags.getOrDefault(temp, new ArrayList<String>());
                 tagList.add(e.getKey());
