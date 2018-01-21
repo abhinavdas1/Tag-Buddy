@@ -87,8 +87,7 @@ public class UserDao {
         }
 
 
-        seedData.add(record.append("tags" , tags)
-        );
+        seedData.add(record.append("tags" , tags).append("name", user.getName()).append("picture", user.getPicture()));
 
         users.insertMany(seedData);
 
@@ -178,5 +177,88 @@ public class UserDao {
         client.close();
 
         return false;
+    }
+
+    public void removeUser(String userId) {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> users = db.getCollection("Users");
+        Document query = new Document("id", userId);
+
+        users.deleteOne(query);
+
+        client.close();
+
+    }
+
+    public void removeUserInstances(String userId) {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> tagUsers = db.getCollection("TagUsers");
+
+        Document query = new Document("users", userId);
+
+        tagUsers.updateMany(query, new Document("$pull", new Document("users", userId)));
+
+        client.close();
+
+    }
+
+
+    public Map<String,String> getNames() {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> users = db.getCollection("Users");
+        Map<String,String> result = new HashMap<String, String>();
+
+        MongoCursor<Document> cursor = users.find().iterator();
+
+        try {
+            while(cursor.hasNext()) {
+                Document current = cursor.next();
+                result.put((String)current.get("id"), (String)current.get("name"));
+            }
+        } finally {
+
+        }
+
+        client.close();
+
+        return result;
+
+    }
+
+    public Map<String,String> getPictures() {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> users = db.getCollection("Users");
+        Map<String,String> result = new HashMap<String, String>();
+
+        MongoCursor<Document> cursor = users.find().iterator();
+
+        try {
+            while(cursor.hasNext()) {
+                Document current = cursor.next();
+                result.put((String)current.get("id"), (String)current.get("picture"));
+            }
+        } finally {
+
+        }
+
+        client.close();
+
+        return result;
     }
 }

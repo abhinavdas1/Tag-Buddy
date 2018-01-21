@@ -44,9 +44,22 @@ public class UserController {
         user.setUserId(params[0].split("=")[1]);
         user.setTags(tags);
 
+        user.setName(params[2].split("=")[1]);
+        user.setPicture(params[3].split("=")[1]);
+
+        System.out.println(user.getName() + " " + user.getPicture());
+
         if(!this.userService.checkIfExisting(user.getUserId()))
         {
             this.userService.addUserData(user);
+        }
+        else
+        {
+            if(!this.userService.compareRecord(user))
+            {
+                this.userService.updateUserRecord(user);
+            }
+
         }
 
         return this.friendService.getFriends(user.getUserId());

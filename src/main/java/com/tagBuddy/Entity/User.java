@@ -9,10 +9,30 @@ public class User {
 
     private String userId;
     private ArrayList<String> tags;
+    private String name;
+    private String picture;
 
-    public User(String userId, ArrayList<String> tags) {
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPicture() {
+        return this.picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public User(String userId, ArrayList<String> tags, String name, String picture) {
         this.userId = userId;
         this.tags = tags;
+        this.name = name;
+        this.picture = picture;
     }
 
     public String getUserId() {

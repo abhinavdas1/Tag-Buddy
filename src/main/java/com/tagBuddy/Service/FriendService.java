@@ -26,6 +26,10 @@ public class FriendService {
         Map<String, Double> matchCounts = new HashMap<String, Double>();
         Map<String, java.util.List<String>> matchedTags = new HashMap<String, java.util.List<String>>();
 
+        Map<String, String> userNames = this.userDao.getNames();
+
+        Map<String, String> userPicture = this.userDao.getPictures();
+
 
         for(Map.Entry<String, Double> e : tagCounts.entrySet())
         {
@@ -43,7 +47,9 @@ public class FriendService {
             }
         }
 
-        FriendSuggestion friendSuggestion = new FriendSuggestion(matchCounts, matchedTags);
+
+
+        FriendSuggestion friendSuggestion = new FriendSuggestion(matchCounts, matchedTags, userNames, userPicture);
 
         return friendSuggestion;
     }
