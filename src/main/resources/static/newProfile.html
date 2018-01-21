@@ -9,6 +9,7 @@
 	
 	<script type="text/javascript" src="js/jquery-1.11.1.js"> </script>
 	<script src='js/newProfile.js'></script>
+
 	
 	<link rel ='stylesheet' href="css/bootstrap.css">
 	<link rel ='stylesheet' href="css/newProfile.css">
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
   </head>
+  
   <body>
 
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -52,32 +54,28 @@
   </div>
   <div class='row'>
     <div class='col-md-offset-2 col-md-8'>
-      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+      <div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="4000">
         <!-- Bottom Carousel Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#quote-carousel" data-slide-to="1"></li>
+          
+          <li id="spinnerDot" data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+          <!--<li data-target="#quote-carousel" data-slide-to="1"></li>
           <li data-target="#quote-carousel" data-slide-to="2"></li>
+      -->
         </ol>
         
         <!-- Carousel Slides / Quotes -->
         <div class="carousel-inner">
-        
-          <!-- Quote 1 -->
-          <div class="item active">
+          
+          <div id="spinner" class="item active">
             <blockquote>
               <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://scontent.cdninstagram.com/t51.2885-19/s150x150/13652172_1086111481443748_644753428_a.jpg" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p>Common tags between you two:</p>
-                  <small><strong> #one #two #three</strong></small>
-                </div>
+                <div class="col-sm-3 text-center" align="center">
+                  <img class="img-circle" src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" style="width: 200px;height:200px;">          </div>
               </div>
             </blockquote>
           </div>
-          <!-- Quote 2 -->
+          <!--
           <div class="item">
             <blockquote>
               <div class="row">
@@ -91,7 +89,7 @@
               </div>
             </blockquote>
           </div>
-          <!-- Quote 3 -->
+          
           <div class="item">
             <blockquote>
               <div class="row">
@@ -105,6 +103,7 @@
               </div>
             </blockquote>
           </div>
+      	-->
         </div>
         
         <!-- Carousel Buttons Next/Prev -->
@@ -124,8 +123,11 @@
           <div class="panel-body">
             
 			<section id="portfolio-container" class="padding-60">
-         <div id="app" class="container">			         
-      </div>
+         <div id="app" class="container">
+             
+			
+           
+      	</div>
             <div style="clear:both;"></div>   
           </div>
          </div>
