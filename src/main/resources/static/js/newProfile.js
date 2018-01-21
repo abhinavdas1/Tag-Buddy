@@ -50,6 +50,8 @@ function httpGetAsync(tagArr, username, fullName, dpLink)
        	 var no=0;
        	 var ppList=parsed.userPicture;
        	 var nameList=parsed.userNames;
+       	 var count=parsed.matchCounts;
+		 keysSorted = Object.keys(count).sort(function(a,b){return list[b]-list[a]})
        	 for (var i in parsed.matchCounts)
        	 {
        	 	var e={'id':i,'tag':parsed.matchCounts[i]};
@@ -116,80 +118,6 @@ function httpGetAsync(tagArr, username, fullName, dpLink)
   }
   xmlHttp.open("POST", theUrl, true); // true for asynchronous 
   xmlHttp.send("userId="+username+"&tags="+tagArr+"&name="+fullName+"&picture="+dpLink);
-}
-function getDom(userId, parseTags, no)
-{
-	var access_token=localStorage.getItem('access_token');
-	var theUrl="https://api.instagram.com/v1/users/"+userId+"/?access_token="+access_token;
-	var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-      if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-      {
-       	 var resp=xmlHttp.responseText;
-       	 var parsed=JSON.parse(resp);
-       	 var pp=parsed.data.profile_picture;
-       	 var tagsString="";
-       	 var tagLen=0;
-       	 var dom=``;
-       	 var dots=``;
-       	 console.log(parseTags);
-       	 for (var id in parseTags.matchedTags)
-       	 {
-       	 	var tags=parseTags.matchedTags[id];
-       	 	console.log("id:"+id+",value:"+tags);
-       	 	if(tags.length >= 5)
-       	 		tagLen=5;
-       	 	else
-       	 		tagLen=tags.length;
-       	 	for (var tag=0; tag<tagLen; tag++)
-       	 		tagsString+="#"+tags[tag]+" ";
-       	 }
- 		 console.log(tagsString);
- 		 if (no==0)
- 		 {
- 		 	dom = `<div class="item active">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <a href="http://wwww.instagram.com/`+i+`">
-                    <img class="img-circle" src="`+pp+`" style="width: 200px;height:200px;">
-                  </a>
-                </div>
-                <div class="col-sm-9">
-                  <p>Common tags between you two:</p>
-                  <small><strong>`+tagsString+`</strong></small>
-                </div>
-              </div>
-            </blockquote>
-         	</div>`;
-         	dots=`<li data-target="#quote-carousel" data-slide-to="0" class="active"></li>`;
- 		 }
- 		 else
- 		 {
- 		 	dom = `<div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <a href="http://wwww.instagram.com/`+i+`">
-                    <img class="img-circle" src="`+pp+`" style="width: 200px;height:200px;">
-                  </a>
-                </div>
-                <div class="col-sm-9">
-                  <p>Common tags between you two:</p>
-                  <small><strong>`+tagsString+`</strong></small>
-                </div>
-              </div>
-            </blockquote>
-            </div>`;
-            dots=`<li data-target="#quote-carousel" data-slide-to="`+no+`"></li>`;
- 		 }
-         console.log(dom);
-         $(".carousel-inner").append(dom);
-         $(".carousel-indicators").append(dom);
-      }
-  }
-  xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-  xmlHttp.send(null);
 }
 
 function outPosts()
