@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
+
 /**
  * Created by abhinavdas on 1/20/18.
  */
@@ -25,12 +30,27 @@ public class UserController {
     @Autowired
     FriendService friendService;
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public FriendSuggestion attemptLogin(@RequestBody User input)
+    @RequestMapping(method = RequestMethod.POST, consumes = "text/plain")
+    public FriendSuggestion attemptLogin(@RequestBody String input)
     {
-        this.userService.addUserData(input);
+        System.out.println("here");
+        System.out.println(input);
+        String[] params = input.split("&");
+        User user = new User();
 
-        return this.friendService.getFriends(input.getUserId());
+        String listOfTags = params[1].split("=")[1];
+        ArrayList<String> tags = new ArrayList<String>(Arrays.asList(listOfTags.split(",")));
+
+        user.setUserId(params[0].split("=")[1]);
+        user.setTags(tags);
+
+        if(!this.userService.checkIfExisting(user.getUserId()))
+        {
+            this.userService.addUserData(user);
+        }
+
+        return this.friendService.getFriends(user.getUserId());
+
 
     }
 }

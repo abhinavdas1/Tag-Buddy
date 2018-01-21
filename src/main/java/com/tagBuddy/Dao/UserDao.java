@@ -152,4 +152,30 @@ public class UserDao {
 
         return result;
     }
+
+
+    public boolean exists(String userId) {
+
+        uri  = new MongoClientURI("mongodb://abhinavdas:swamphacks@ds263837.mlab.com:63837/swamphack");
+        client = new MongoClient(uri);
+        db = client.getDatabase(uri.getDatabase());
+
+        MongoCollection<Document> users = db.getCollection("Users");
+        Document query = new Document("id", userId);
+
+
+        MongoCursor<Document> cursor = users.find(query).iterator();
+
+        try {
+            if(cursor.hasNext()) {
+                return true;
+            }
+        } finally {
+
+        }
+
+        client.close();
+
+        return false;
+    }
 }

@@ -19,4 +19,14 @@ public class UserService {
     {
         this.userDao.addUserData(input);
     }
+
+    public boolean checkIfExisting(String userId) {
+
+        if(this.userDao.exists(userId))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
